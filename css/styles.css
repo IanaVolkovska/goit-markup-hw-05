@@ -120,6 +120,7 @@ display: flex;
     text-decoration: none;
     padding-top: 32px;
     padding-bottom: 32px;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .title:hover,
@@ -135,6 +136,17 @@ display: flex;
     text-decoration: none;
     padding-top: 32px;
     padding-bottom: 32px;
+    position: relative;
+}
+.active-title::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: var(--link-text-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 .list .item:first-child {
     margin-left: 0px;
@@ -153,12 +165,16 @@ display: flex;
     letter-spacing: 0.02em;
     padding-top: 32px;
     padding-bottom: 32px;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .link-contact {
     margin-right: 50px;
 }
 .link-contact:last-child {
     margin-right: 0px;
+}
+.contact {
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .link:hover,
 .link:focus,
@@ -179,10 +195,12 @@ display: flex;
         padding-top: 32px;
         padding-bottom: 32px;
         display: flex;
+        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .studio-icon {
     fill: currentColor;
     margin-right: 10px;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .studio-icon:hover,
 .studio-icon:focus {
@@ -237,7 +255,50 @@ display: flex;
     border: transparent;
     padding: 10px 32px;
 }
-
+.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+.backdrop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--accent-text-color);
+    z-index: 5;
+}
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 528px;
+    height: 581px;
+    background-color: var(--accent-text-color);
+    box-shadow: 0px 1px 3px rgb(0 0 0 / 12%), 0px 1px 1px rgb(0 0 0 / 14%), 0px 2px 1px rgb(0 0 0 / 20%);
+    border-radius: 4px;
+}
+.closes {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+}
+.modal-close {
+    height: 11px;
+    width: 11px;
+}
 /*Advantages*/
 .feature-section {
     padding-top: 94px;
@@ -297,6 +358,33 @@ display: flex;
     letter-spacing: 0.03em;
     margin-top: 0px;
     margin-bottom: 50px;
+}
+.activity-card {
+    position: relative;
+    margin: 0;
+}
+.activity-position {
+    position: absolute;
+        left: 0;
+        bottom: 0;
+        display: flex;
+        width: 100%;
+        padding-top: 27px;
+        padding-bottom: 27px;
+        justify-content: center;
+        align-items: center;
+        color: var(--accent-text-color);
+        background-color: rgba(47, 48, 58, 0.8);
+}
+.activity-position-text {
+    font-weight: 700;
+        font-size: 14px;
+        line-height: 1.14;
+        text-align: center;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: var(--accent-text-color);
+        margin: 0;
 }
 .activity-list:not(:last-child) {
     margin-right: 30px;
@@ -360,6 +448,7 @@ display: flex;
     width: 44px;
         height: 44px;
         border-radius: 50%;
+        transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .team-icons {
     margin-right: 10px;
@@ -377,6 +466,7 @@ margin-right: 0px;
     border-radius: 50%;
     padding: 12px;
     fill: var(--icon-color);
+    transition: border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .social-icons:hover,
 .social-icons:focus {
@@ -411,6 +501,7 @@ margin-right: 0px;
     align-items: center;
     justify-content: center;
     color: var(--icon-color);
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients-link:hover,
@@ -428,9 +519,11 @@ margin-right: 0px;
     justify-content: center;
     border: 1px solid var(--icon-color);
     border-radius: 4px;
+    transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1), border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .clientsocial-icons {
     fill: currentColor;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .clientsocial-icons:hover,
 .clientsocial-icons:focus {
@@ -466,9 +559,11 @@ margin-right: 0px;
     height: 44px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .connect-icons {
         fill: var(--accent-text-color);
+        transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-link:hover,
 .footer-link:focus {
@@ -560,7 +655,8 @@ align-items: flex-start;
     margin-left: 8px;
     padding: 6px 22px;
     border-radius: 4px;
-    border: var(--secondary-background-color)
+    border: var(--secondary-background-color);
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .profile-btn:hover,
@@ -598,6 +694,7 @@ align-items: flex-start;
     border: 1px;
     border: var(--list-background-color);
     border-bottom: 1px solid var(--list-background-color);
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .portfolio-list:nth-child(3n) {
     margin-right: 0px;
@@ -644,4 +741,34 @@ box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
     line-height: 1.88;
     letter-spacing: 0.03em;
     text-decoration: none;
+}
+.port-text-position {
+    position: relative;
+    overflow: hidden;
+}
+.port-text-item {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-top: 63px;
+    padding-right: 24px;
+    padding-bottom: 63px;
+    padding-left: 24px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(100%);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: rgba(33, 150, 243, 0.9);
+    font-size: 18px;
+    line-height: 1.56;
+    letter-spacing: 0.03em;
+    color: var(--accent-text-color);
+    opacity: 0;
+}
+.port-text-item:hover,
+.port-text-item:focus {
+    opacity: 1;
+    transform: translateY(-100%);
 }

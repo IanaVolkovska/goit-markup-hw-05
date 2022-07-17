@@ -67,7 +67,16 @@
       <section class="hero-section">
         <div class="hero">
           <h1 class="hero-title">Эффективные решения для вашего бизнеса</h1>
-          <button type="button" class="hero-button">Заказать услугу</button>
+          <button type="button" class="hero-button" data-modal-open="">Заказать услугу</button>
+          <div class="backdrop is-hidden" data-modal="">
+            <div class="modal">
+              <button data-modal-close="" class="closes">
+                <svg class="modal-close">
+                  <use href="./images/icons/close.svg"></use>
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
       </section>
       <!--Advantages-->
@@ -133,21 +142,32 @@
           <div class="activity-items">
             <ul class="list">
               <li class="activity-list">
+                <div class="activity-card">
                 <img src="./images/analysis.jpg" alt="analysis" width="370" />
+                <div class="activity-position">
+                <p class="activity-position-text">Десктопные приложения</p></div></div>
               </li>
               <li class="activity-list">
+                <div class="activity-card">
                 <img
                   src="./images/consulting.jpg"
                   alt="consulting"
                   width="370"
                 />
+                <div class="activity-position">
+                  <p class="activity-position-text">Мобильные приложения</p>
+                </div></div>
               </li>
               <li class="activity-list">
+                <div class="activity-card">
                 <img
                   src="./images/representation.jpg"
                   alt="representation"
                   width="370"
                 />
+                <div class="activity-position">
+                  <p class="activity-position-text">Дизайнерские решения</p>
+                </div></div>
               </li>
             </ul>
           </div>
@@ -484,5 +504,6 @@
         </div>
       </section>
     </footer>
+    <script src="./js/modal.js"></script>
   </body>
 </html>
